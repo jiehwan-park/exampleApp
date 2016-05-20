@@ -1,1 +1,1 @@
-Tizen artik example app packages
+Tizen artik example app packages..
