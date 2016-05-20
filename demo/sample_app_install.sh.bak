@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo "Sample app install"
+pkgcmd -i -t tpk -p /home/owner/org.example.player*.tpk
+pkgcmd -i -t tpk -p /home/owner/org.example.camera*.tpk
+exit

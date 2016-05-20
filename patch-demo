@@ -1,0 +1,37 @@
+sdb root on
+
+#create repository for patch files
+sdb shell mkdir -p /tmp/patchtmp
+
+#for camera feature
+sdb shell mkdir -p /tmp/patchtmp/camera
+sdb push demo/camera/*.rpm /tmp/patchtmp/camera
+sdb shell rpm -Uvh --force --nodeps /tmp/patchtmp/camera/*.rpm
+
+#for video feature
+sdb push demo/capi-media-player*.rpm /tmp/patchtmp
+sdb shell rpm -e --nodeps capi-media-player
+sdb shell rpm -Uvh --force --nodeps /tmp/patchtmp/capi-media-player*.rpm
+
+#player sample app install
+sdb push demo/sample_app_install.sh /home/owner/
+sdb push demo/org.example.player*.tpk /home/owner/
+sdb push demo/org.example.camera*.tpk /home/owner/
+sdb push demo/org.example.animation*.tpk /home/owner/
+sdb push demo/org.example.calculator*.tpk /home/owner/
+sdb push demo/org.example.ddktest*.tpk /home/owner/
+sdb push demo/org.example.glbasicrenderer*.tpk /home/owner/
+sdb shell chown owner:users /home/owner/sample_app_install.sh
+sdb shell su -c /home/owner/sample_app_install.sh - owner
+
+#for elm-demo-tizen-common feature
+sdb push demo/org.tizen.elm-demo-tizen-common*.rpm /tmp/patchtmp
+sdb shell rpm -e --nodeps elm-demo-tizen-common
+sdb shell rpm -ivh --force --nodeps /tmp/patchtmp/org.tizen.elm-demo-tizen-common*.rpm
+sdb shell tpk-backend -y org.tizen.elm-demo-tizen-common --preload
+
+sdb shell sync
+sdb shell sync
+sdb shell sync
+
+sdb shell reboot -f
