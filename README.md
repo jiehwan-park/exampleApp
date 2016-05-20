@@ -4,11 +4,11 @@ There are two patches in zip file, the one is for local patch which is for confi
 the other is for demo(there a few application to show up the functionality
 
 Here is steps how to run patches
-1. uzip the file 
+1) uzip the file 
 
-2. find script (patch-local, patch-demo)
+2) find script (patch-local, patch-demo)
 
-3. run patch
+3) run patch
  $ sudo ./patch-local
 => If the patch is done, it can be rebooted automatically.
  $ sudo ./patch-demo
