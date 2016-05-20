@@ -1,7 +1,10 @@
 Tizen artik example app packages..
 Please download the patch according to your target(ARTIK5 or ARTIK10)
 There are two patches in zip file, the one is for local patch which is for configuration and TBD items, 
-the other is for demo(there a few application to show up the functionality
+the other is for demo(there a few application to show up the functionality.
+
+The patches were checked in below version.<br>
+https://download.tizen.org/releases/weekly/tizen/common/tizen-common_20160510.2/
 
 Here is steps how to run patches
 <pre>
