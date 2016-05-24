@@ -30,6 +30,32 @@ sdb shell rpm -e --nodeps elm-demo-tizen-common
 sdb shell rpm -ivh --force --nodeps /tmp/patchtmp/org.tizen.elm-demo-tizen-common*.rpm
 sdb shell tpk-backend -y org.tizen.elm-demo-tizen-common --preload
 
+#for enlightenment feature
+sdb push demo/enlightenment*.rpm /tmp/patchtmp
+sdb shell rpm -e --nodeps enlightenment
+sdb shell rpm -ivh --force --nodeps /tmp/patchtmp/enlightenment*.rpm
+
+#for menu-screen feature
+sdb push demo/org.tizen.menu-screen*.rpm /tmp/patchtmp
+sdb shell rpm -e --nodeps org.tizen.menu-screen
+sdb shell rpm -ivh --force --nodeps /tmp/patchtmp/org.tizen.menu-screen*.rpm
+
+#for efl-theme feature
+sdb push demo/efl-theme-tizen-common*.rpm /tmp/patchtmp
+sdb shell rpm -e --nodeps efl-theme-tizen-common
+sdb shell rpm -ivh --force --nodeps /tmp/patchtmp/efl-theme-tizen-common*.rpm
+
+#for efl-config feature
+sdb push demo/efl-config*.rpm /tmp/patchtmp
+sdb shell rpm -e --nodeps efl-config
+sdb shell rpm -ivh --force --nodeps /tmp/patchtmp/efl-config*.rpm
+
+#for dali-demo feature
+sdb push demo/com.samsung.dali-demo*.rpm /tmp/patchtmp
+sdb shell rpm -e --nodeps com.samsung.dali-demo
+sdb shell rpm -ivh --force --nodeps /tmp/patchtmp/com.samsung.dali-demo*.rpm
+sdb shell tpk-backend -y com.samsung.dali-demo --preload
+
 sdb shell sync
 sdb shell sync
 sdb shell sync
