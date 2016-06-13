@@ -3,15 +3,14 @@ sdb root on
 #create repository for patch files
 sdb shell mkdir -p /tmp/patchtmp
 
-#for camera feature
-sdb shell mkdir -p /tmp/patchtmp/camera
-sdb push demo/camera/*.rpm /tmp/patchtmp/camera
-sdb shell rpm -Uvh --force --nodeps /tmp/patchtmp/camera/*.rpm
+#enable chromium-efl.mini_browser in menu-screen
+sdb shell sed '6s/nodisplay=\"true\"/nodisplay=\"false\"/' /usr/share/packages/org.tizen.chromium-efl.xml > org.tizen.chromium-efl.xml
+sdb push org.tizen.chromium-efl.xml /usr/share/packages/org.tizen.chromium-efl.xml
+rm -rf org.tizen.chromium-efl.xml
+sdb shell tpk-backend -y org.tizen.chromium-efl --preload
 
-#for video feature
-sdb push demo/capi-media-player*.rpm /tmp/patchtmp
-sdb shell rpm -e --nodeps capi-media-player
-sdb shell rpm -Uvh --force --nodeps /tmp/patchtmp/capi-media-player*.rpm
+#temporary : copy necessary files
+sdb push demo/*.mp4 /home/owner/
 
 #player sample app install
 sdb push demo/sample_app_install.sh /home/owner/
@@ -24,37 +23,13 @@ sdb push demo/org.example.glbasicrenderer*.tpk /home/owner/
 sdb shell chown owner:users /home/owner/sample_app_install.sh
 sdb shell su -c /home/owner/sample_app_install.sh - owner
 
-#for elm-demo-tizen-common feature
-sdb push demo/org.tizen.elm-demo-tizen-common*.rpm /tmp/patchtmp
-sdb shell rpm -e --nodeps elm-demo-tizen-common
-sdb shell rpm -ivh --force --nodeps /tmp/patchtmp/org.tizen.elm-demo-tizen-common*.rpm
-sdb shell tpk-backend -y org.tizen.elm-demo-tizen-common --preload
-
-#for enlightenment feature
-sdb push demo/enlightenment*.rpm /tmp/patchtmp
-sdb shell rpm -e --nodeps enlightenment
-sdb shell rpm -ivh --force --nodeps /tmp/patchtmp/enlightenment*.rpm
-
-#for menu-screen feature
-sdb push demo/org.tizen.menu-screen*.rpm /tmp/patchtmp
-sdb shell rpm -e --nodeps org.tizen.menu-screen
-sdb shell rpm -ivh --force --nodeps /tmp/patchtmp/org.tizen.menu-screen*.rpm
-
-#for efl-theme feature
-sdb push demo/efl-theme-tizen-common*.rpm /tmp/patchtmp
-sdb shell rpm -e --nodeps efl-theme-tizen-common
-sdb shell rpm -ivh --force --nodeps /tmp/patchtmp/efl-theme-tizen-common*.rpm
-
-#for efl-config feature
-sdb push demo/efl-config*.rpm /tmp/patchtmp
-sdb shell rpm -e --nodeps efl-config
-sdb shell rpm -ivh --force --nodeps /tmp/patchtmp/efl-config*.rpm
 
 #for dali-demo feature
 sdb push demo/com.samsung.dali-demo*.rpm /tmp/patchtmp
 sdb shell rpm -e --nodeps com.samsung.dali-demo
 sdb shell rpm -ivh --force --nodeps /tmp/patchtmp/com.samsung.dali-demo*.rpm
 sdb shell tpk-backend -y com.samsung.dali-demo --preload
+
 
 sdb shell sync
 sdb shell sync
