@@ -9,6 +9,13 @@ sdb push org.tizen.chromium-efl.xml /usr/share/packages/org.tizen.chromium-efl.x
 rm -rf org.tizen.chromium-efl.xml
 sdb shell tpk-backend -y org.tizen.chromium-efl --preload
 
+#Install utils for Internet explorer
+sdb push demo/boost-* /tmp/patchtmp
+sdb push demo/org.tizen.browser* /tmp/patchtmp
+sdb shell rpm -Uvh --nodeps --force /tmp/patchtmp/boost-*.rpm
+sdb shell rpm -Uvh --nodeps --force /tmp/patchtmp/org.tizen.browser*.rpm
+sdb shell tpk-backend -y org.tizen.browser --preload
+
 #temporary : copy necessary files
 sdb push demo/*.mp4 /home/owner/
 
