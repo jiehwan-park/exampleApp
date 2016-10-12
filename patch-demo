@@ -40,13 +40,6 @@ sdb shell rpm -e --nodeps com.samsung.dali-demo
 sdb shell rpm -ivh --force --nodeps /tmp/patchtmp/com.samsung.dali-demo*.rpm
 sdb shell tpk-backend -y com.samsung.dali-demo --preload
 
-echo -e "\n\n---------------temporary patch for modified efl packages that fixed displaying issue at camera preview and player---------------"
-#temporary patch for modified efl packages that fixed displaying issue at camera preview and player
-sdb shell mkdir -p /tmp/efl_pkg
-sdb push efl_pkg/*.rpm /tmp/efl_pkg
-sdb shell rpm -Uvh --nodeps --force /tmp/efl_pkg/*.rpm
-sdb shell rm -rf /tmp/efl_pkg
-
 
 sdb shell sync
 sdb shell sync
