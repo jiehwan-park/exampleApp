@@ -13,10 +13,10 @@ sdb shell tpk-backend -y org.tizen.browser --preload
 
 echo -e "\n\n---------------enable chromium-efl.mini_browser in menu-screen---------------"
 #enable chromium-efl.mini_browser in menu-screen
-sdb shell sed '6s/nodisplay=\"true\"/nodisplay=\"false\"/' /usr/share/packages/org.tizen.chromium-efl.xml > org.tizen.chromium-efl.xml
-sdb push org.tizen.chromium-efl.xml /usr/share/packages/org.tizen.chromium-efl.xml
-rm -rf org.tizen.chromium-efl.xml
-sdb shell tpk-backend -y org.tizen.chromium-efl --preload
+#sdb shell sed '6s/nodisplay=\"true\"/nodisplay=\"false\"/' /usr/share/packages/org.tizen.chromium-#efl.xml > org.tizen.chromium-efl.xml
+#sdb push org.tizen.chromium-efl.xml /usr/share/packages/org.tizen.chromium-efl.xml
+#rm -rf org.tizen.chromium-efl.xml
+#sdb shell tpk-backend -y org.tizen.chromium-efl --preload
 
 #temporary : copy necessary files
 sdb push demo/*.mp4 /home/owner/
