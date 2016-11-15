@@ -44,5 +44,7 @@ sdb shell tpk-backend -y com.samsung.dali-demo --preload
 sdb shell sync
 sdb shell sync
 sdb shell sync
+sdb shell sync
+sdb shell sync
 
 sdb shell reboot -f
